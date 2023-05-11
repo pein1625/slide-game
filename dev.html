@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <title>Title</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="Description" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <!-- Styles-->
+        <link rel="stylesheet" type="text/css" href="./css/libs.css" />
+        <link rel="stylesheet" type="text/css" href="./vendor/fontawesome-pro/css/all.min.css" />
+        <link rel="stylesheet" type="text/css" href="./css/app.css?v=1.0" />
+        <!-- Scripts-->
+        <script src="./js/libs.js" defer="defer"></script>
+        <script src="./js/api.js?v=1.0" defer="defer"></script>
+        <script src="./js/app.js?v=1.0" defer="defer"></script>
+    </head>
+    <body>
+        <div class="page">
+            <!-- header-->
+            <header class="header"><a class="header__logo" href="#!"><img src="./images/logo_bidv.svg" alt="" /></a></header>
+            <div class="page__content">
+                <!-- main content-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="game js-slide-game">
+                                <div class="game__body">
+                                    <div class="game__wrapper">
+                                        <div class="game__inner">
+                                            <div class="cell cell--empty cell--0" data-index="0">
+                                                <div class="cell-caret cell-caret--top"></div>
+                                                <div class="cell-caret cell-caret--bottom"></div>
+                                                <div class="cell-caret cell-caret--left"></div>
+                                                <div class="cell-caret cell-caret--right"></div>
+                                            </div>
+                                            <div class="cell cell--1" data-index="1"></div>
+                                            <div class="cell cell--2" data-index="2"></div>
+                                            <div class="cell cell--3" data-index="3"></div>
+                                            <div class="cell cell--4" data-index="4"></div>
+                                            <div class="cell cell--5" data-index="5"></div>
+                                            <div class="cell cell--6" data-index="6"></div>
+                                            <div class="cell cell--7" data-index="7"></div>
+                                            <div class="cell cell--8" data-index="8"></div>
+                                            <div class="cell cell--9" data-index="9"></div>
+                                            <div class="cell cell--10" data-index="10"></div>
+                                            <div class="cell cell--11" data-index="11"></div>
+                                            <div class="game__lock">
+                                                <div class="game__lock-inner">
+                                                    <button class="button game__start js-game-start" type="button">Bắt đầu</button>
+                                                    <button class="button game__end" type="button">Kết thúc</button>
+                                                </div>
+                                            </div>
+                                            <div class="game__board">
+                                                <div class="game__type">Minigame</div>
+                                                <div class="game__name">Ghép hình thẻ</div>
+                                                <div class="game__time">Còn lại:&nbsp;<span class="game__remaining">
+                                                        <!-- 60s-->
+                                                    </span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="game__footer"><a class="game__link" href="#!"><i class="fal fa-question-circle me-2"></i>Hướng dẫn</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap"></div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <h2 class="text-white w-100">Quiz điều hướng</h2>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-form-info">Vui lòng cho biết độ tuổi của bạn</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-intro-1">Bạn phù hợp với thẻ BIDV Napas Smart</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-intro-2">Bạn phù hợp với thẻ BIDV Visa Platinum Cashback</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <h2 class="text-white w-100">Interactive TVC</h2>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-upload">Tải lên hình ảnh của bạn</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-upload-success">Tải lên thành công</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <h2 class="text-white w-100">Popup hỏi login</h2>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-login-suggest">Bạn có muốn đăng nhập để lưu kết quả chơi?</buton>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-gift-form">Thông tin nhận thưởng</buton>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <h2 class="text-white w-100">Minigame 2: Quiz</h2>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-quiz-begin">Quiz Begin</buton>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <h2 class="text-white w-100">Minigame 1: Ghép hình thẻ</h2>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-slide-game">Slide Game</buton>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <h2 class="text-white w-100">Minigame 3: Ghép hình thẻ</h2>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <h2 class="text-white w-100">Popup chơi lại</h2>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-result">Xin chúc mừng, bạn đã hoàn thành tất cả trò chơi</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-play-again">Bạn có muốn chơi lại từ đầu không?</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <h2 class="text-white w-100">Bảng xếp hạng</h2>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-leaderboard">Leaderboard</buton>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <h2 class="text-white w-100">Accounts</h2>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-login">Đăng nhập</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-login-error">Đăng nhập lỗi</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-login-success">Đăng nhập thành công</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-register">Đăng ký</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-register-error">Đăng ký - Lỗi</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-reset-password">Đặt lại mật khẩu</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-reset-email-success">Đặt lại mật khẩu - Đã gửi email</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-reset-email-error">Đặt lại mật khẩu - Lỗi</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-new-password">Tạo mật khẩu mới</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-new-password-success">Đặt lại mật khẩu thành công</button>
+                    </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-new-password-error">Đặt lại mật khẩu - Lỗi</button>
+                    </div>
+                </div>
+                <div class="md-form-info modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="md-form-info__group">
+                                    <label class="md-form-info__label">Vui lòng cho biết độ tuổi của bạn</label>
+                                    <div class="md-form-info__radio-group">
+                                        <label class="radio-styled">
+                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>18 - 25 tuổi</span>
+                                        </label>
+                                        <label class="radio-styled">
+                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>25 - 45 tuổi</span>
+                                        </label>
+                                        <label class="radio-styled">
+                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>Trên 45 tuổi</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="md-form-info__group">
+                                    <label class="md-form-info__label">Chi tiêu trung bình hàng tháng của bạn</label>
+                                    <div class="md-form-info__radio-group">
+                                        <label class="radio-styled">
+                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>18 - 25 tuổi</span>
+                                        </label>
+                                        <label class="radio-styled">
+                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>25 - 45 tuổi</span>
+                                        </label>
+                                        <label class="radio-styled">
+                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>Trên 45 tuổi</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="modal-button-group">
+                                    <button class="button" type="button">Xác nhận</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-intro-1 modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="modal-card"><img src="./images/modal-card-1.png" alt="" /></div>
+                                <div class="modal-title">Xin chúc mừng</div>
+                                <div class="modal-subtitle">Bạn phù hợp với thẻ BIDV Napas Smart</div>
+                                <div class="modal-desc">Vui lòng ấn nút bên dưới để xem thêm thông tin chi tiết</div>
+                                <div class="modal-button-group">
+                                    <button class="button" type="button">Xem chi tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-intro-2 modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="modal-card"><img src="./images/modal-card-2.png" alt="" /></div>
+                                <div class="modal-title">Xin chúc mừng</div>
+                                <div class="modal-subtitle">Bạn phù hợp với thẻ BIDV Napas Smart</div>
+                                <div class="modal-desc">Bạn phù hợp với thẻ BIDV Visa Platinum Cashback</div>
+                                <div class="modal-button-group">
+                                    <button class="button" type="button">Xem chi tiết</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-upload modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="modal-title">Tải lên hình ảnh của bạn</div>
+                                <div class="mt-4 mt-xl-40 mt-xxl-60">
+                                    <label class="file-input js-file">
+                                        <input class="js-file-input" type="file" data-target="#avatar-preview" /><img class="file-input__icon" src="./images/icon-cloud-upload.svg" alt="" /><span class="file-input__text js-file-text">Chấp nhận file .jpg, .png</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-upload-success modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="modal-icon"><i class="fal fa-lg fa-check-circle"></i></div>
+                                <div class="modal-title">Tải lên thành công</div>
+                                <div class="modal-desc mx-auto" style="max-width: 493px;">Bài thi của bạn đã được tải lên thành công. Chúng tôi sẽ thông báo kết quả sớm nhất cho bạn thông qua email.</div>
+                                <div class="modal-button-group">
+                                    <button class="button" type="button">Quay lại Sảnh chính</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-login" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!">
+                                    <div class="md-form__title">Đăng nhập</div>
+                                    <div class="d-flex justify-content-center mb-4"><a class="d-inline-flex me-4 me-xl-40" href="#!"><img src="./images/icon-facebook.png" height="56" alt="" /></a><a class="d-inline-flex" href="#!"><img src="./images/icon-google.png" height="56" alt="" /></a></div>
+                                    <div class="md-form__desc mb-4">hoặc đăng nhập bằng email của bạn</div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="email" placeholder="Email" />
+                                    </div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="password" placeholder="Mật khẩu" />
+                                    </div>
+                                    <div class="mb-3 text-center"><a class="md-form__link js-switch-modal" href=".md-reset-password">Quên mật khẩu</a></div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Đăng nhập</button>
+                                    </div>
+                                    <div class="md-form__footer">Bạn chưa có tài khoản? <a class="js-switch-modal" href=".md-register">Tạo tài khoản mới</a></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-login-error" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!">
+                                    <div class="md-form__title">Đăng nhập</div>
+                                    <div class="d-flex justify-content-center mb-4"><a class="d-inline-flex me-4 me-xl-40" href="#!"><img src="./images/icon-facebook.png" height="56" alt="" /></a><a class="d-inline-flex" href="#!"><img src="./images/icon-google.png" height="56" alt="" /></a></div>
+                                    <div class="md-form__desc mb-4">hoặc đăng nhập bằng email của bạn</div>
+                                    <div class="md-form__group is-error">
+                                        <input class="form-control" type="email" placeholder="Email" />
+                                        <div class="md-form__error"><i class="fal fa-times-circle me-2"></i>Email không tồn tại</div>
+                                    </div>
+                                    <div class="md-form__group is-error">
+                                        <input class="form-control" type="password" placeholder="Mật khẩu" />
+                                        <div class="md-form__error"><i class="fal fa-times-circle me-2"></i>Sai mật khẩu</div>
+                                    </div>
+                                    <div class="mb-3 text-center"><a class="md-form__link js-switch-modal" href=".md-reset-password">Quên mật khẩu</a></div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Đăng nhập</button>
+                                    </div>
+                                    <div class="md-form__footer">Bạn chưa có tài khoản? <a class="js-switch-modal" href=".md-register">Tạo tài khoản mới</a></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-login-success" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!" style="max-width: 460px;">
+                                    <div class="md-form__icon"><i class="fal fa-lg fa-check-circle"></i></div>
+                                    <div class="md-form__title mb-3">Bạn đã đăng nhập thành công!</div>
+                                    <div class="md-form__desc">Điểm số của bạn sẽ được lưu trên hệ thống.</div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Tiếp tục khám phá</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-login-suggest modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="modal-title">Bạn có muốn đăng nhập để lưu kết quả chơi?</div>
+                                <div class="modal-button-group">
+                                    <button class="button js-switch-modal" type="button" data-target=".md-login">Đăng nhập</button>
+                                    <button class="button" type="button">Tiếp tục chơi</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-register" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!">
+                                    <div class="md-form__title">Tạo tài khoản mới</div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="text" placeholder="Tên" />
+                                    </div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="email" placeholder="Email" />
+                                    </div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="password" placeholder="Mật khẩu" />
+                                    </div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="password" placeholder="Nhập lại mật khẩu" />
+                                    </div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Đăng ký</button>
+                                    </div>
+                                    <div class="md-form__footer">Bạn đã có tài khoản? <a class="js-switch-modal" href=".md-login">Đăng nhập</a></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-register-error" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!">
+                                    <div class="md-form__title">Tạo tài khoản mới</div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="text" placeholder="Tên" />
+                                    </div>
+                                    <div class="md-form__group is-error">
+                                        <input class="form-control" type="email" placeholder="Email" />
+                                        <div class="md-form__error"><i class="fal fa-times-circle me-2"></i>Email đã tồn tại</div>
+                                    </div>
+                                    <div class="md-form__group is-error">
+                                        <input class="form-control" type="password" placeholder="Mật khẩu" />
+                                        <div class="md-form__error"><i class="fal fa-times-circle me-2"></i>Mật khẩu không khớp</div>
+                                    </div>
+                                    <div class="md-form__group is-error">
+                                        <input class="form-control" type="password" placeholder="Nhập lại mật khẩu" />
+                                        <div class="md-form__error"><i class="fal fa-times-circle me-2"></i>Mật khẩu không khớp</div>
+                                    </div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Đăng ký</button>
+                                    </div>
+                                    <div class="md-form__footer">Bạn đã có tài khoản? <a class="js-switch-modal" href=".md-login">Đăng nhập</a></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-reset-password" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!">
+                                    <div class="md-form__title">Đặt lại mật khẩu</div>
+                                    <div class="md-form__desc">Nhập email được liên kết với tài khoản của bạn và chúng tôi sẽ gửi email có hướng dẫn để đặt lại mật khẩu của bạn.</div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="email" placeholder="Email" value="" />
+                                    </div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Gửi yêu cầu</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-reset-email-success" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!">
+                                    <div class="md-form__title">Đặt lại mật khẩu</div>
+                                    <div class="md-form__desc">Nhập email được liên kết với tài khoản của bạn và chúng tôi sẽ gửi email có hướng dẫn để đặt lại mật khẩu của bạn.</div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="email" placeholder="Email" value="xxxx@gmail.com" />
+                                        <div class="md-form__success"><i class="fal fa-check-circle me-2"></i>Đã gửi</div>
+                                    </div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Gửi yêu cầu</button>
+                                    </div>
+                                    <div class="md-form__footer">Chưa nhận được email? <a href="#!">Gửi lại</a></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-reset-email-error" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!">
+                                    <div class="md-form__title">Đặt lại mật khẩu</div>
+                                    <div class="md-form__desc">Nhập email được liên kết với tài khoản của bạn và chúng tôi sẽ gửi email có hướng dẫn để đặt lại mật khẩu của bạn.</div>
+                                    <div class="md-form__group is-error">
+                                        <input class="form-control" type="email" placeholder="Email" value="" />
+                                        <div class="md-form__error"><i class="fal fa-times-circle me-2"></i>Email không tồn tại</div>
+                                    </div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Gửi yêu cầu</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-new-password" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!">
+                                    <div class="md-form__title">Tạo mật khẩu mới</div>
+                                    <div class="md-form__desc">Mật khẩu mới của bạn phải khác với mật khẩu cũ.</div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="password" placeholder="Mật khẩu mới" />
+                                    </div>
+                                    <div class="md-form__group">
+                                        <input class="form-control" type="password" placeholder="Nhập lại mật khẩu" />
+                                    </div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Xác nhận</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-new-password-success" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!">
+                                    <div class="md-form__icon"><i class="fal fa-lg fa-check-circle"></i></div>
+                                    <div class="md-form__title">Đặt lại mật khẩu thành công</div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Tiếp tục đăng nhập</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-new-password-error" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form" action="#!">
+                                    <div class="md-form__title">Tạo mật khẩu mới</div>
+                                    <div class="md-form__desc">Mật khẩu mới của bạn phải khác với mật khẩu cũ.</div>
+                                    <div class="md-form__group is-error">
+                                        <input class="form-control" type="password" placeholder="Mật khẩu mới" />
+                                        <div class="md-form__error"><i class="fal fa-times-circle me-2"></i>Mật khẩu không khớp</div>
+                                    </div>
+                                    <div class="md-form__group is-error">
+                                        <input class="form-control" type="password" placeholder="Nhập lại mật khẩu" />
+                                        <div class="md-form__error"><i class="fal fa-times-circle me-2"></i>Mật khẩu không khớp</div>
+                                    </div>
+                                    <div class="my-30 d-flex justify-content-center">
+                                        <button class="button" type="submit">Xác nhận</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-play-again modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="modal-title">Bạn có muốn chơi lại từ đầu không?</div>
+                                <div class="modal-desc">Lưu ý: Thời gian sẽ được cộng dần giữa các lần chơi lại</div>
+                                <div class="modal-button-group">
+                                    <button class="button me-4 me-xl-40" type="button">Có</button>
+                                    <button class="button" type="button">Không</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-result modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="md-result__badge"><img src="./images/medal-badge.svg" alt="" /></div>
+                                <div class="md-result__title">Total score</div>
+                                <div class="md-result__score">60</div>
+                                <div class="md-result__time"><i class="fal fa-stopwatch me-2"></i>5p30s</div>
+                                <div class="md-result__desc">Xin chúc mừng, bạn đã hoàn thành tất cả trò chơi</div>
+                                <div class="modal-button-group">
+                                    <button class="button js-switch-modal" type="button" data-target=".md-login">Đăng nhập</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-leaderboard modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="md-leaderboard__title">Leaderboard</div>
+                                <div class="md-leaderboard__list">
+                                    <div class="md-leaderboard__item">
+                                        <div class="md-leaderboard__place"><img src="./images/medal-1.svg" alt="" />
+                                        </div>
+                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                        <div class="md-leaderboard__name">Player Name</div>
+                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
+                                    </div>
+                                    <div class="md-leaderboard__item">
+                                        <div class="md-leaderboard__place"><img src="./images/medal-2.svg" alt="" />
+                                        </div>
+                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                        <div class="md-leaderboard__name">Player Name</div>
+                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
+                                    </div>
+                                    <div class="md-leaderboard__item">
+                                        <div class="md-leaderboard__place"><img src="./images/medal-3.svg" alt="" />
+                                        </div>
+                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                        <div class="md-leaderboard__name">Player Name</div>
+                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
+                                    </div>
+                                    <div class="md-leaderboard__item">
+                                        <div class="md-leaderboard__place">4
+                                        </div>
+                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                        <div class="md-leaderboard__name">Player Name</div>
+                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
+                                    </div>
+                                    <div class="md-leaderboard__item">
+                                        <div class="md-leaderboard__place">5
+                                        </div>
+                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                        <div class="md-leaderboard__name">Player Name</div>
+                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
+                                    </div>
+                                    <div class="md-leaderboard__item">
+                                        <div class="md-leaderboard__place">6
+                                        </div>
+                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                        <div class="md-leaderboard__name">Player Name</div>
+                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
+                                    </div>
+                                    <div class="md-leaderboard__item">
+                                        <div class="md-leaderboard__place">7
+                                        </div>
+                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                        <div class="md-leaderboard__name">Player Name</div>
+                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
+                                    </div>
+                                    <div class="md-leaderboard__item">
+                                        <div class="md-leaderboard__place">8
+                                        </div>
+                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                        <div class="md-leaderboard__name">Player Name</div>
+                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
+                                    </div>
+                                    <div class="md-leaderboard__item">
+                                        <div class="md-leaderboard__place">9
+                                        </div>
+                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                        <div class="md-leaderboard__name">Player Name</div>
+                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
+                                    </div>
+                                    <div class="md-leaderboard__item">
+                                        <div class="md-leaderboard__place">10
+                                        </div>
+                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                        <div class="md-leaderboard__name">Player Name</div>
+                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-gift-form modal fade" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body md-form">
+                                <div class="modal-title">Thông tin nhận thưởng</div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-form-label md-form-info__label">Số CCCD/Hộ chiếu<span class="text-danger">*</span></div>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="modal-button-group">
+                                    <button class="button" type="button" data-target=".md-login">Gửi thông tin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-quiz-begin" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="modal-title mb-4 mb-xl-40 mb-xxl-60">Minigame: Quiz</div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="quiz-info">
+                                            <div class="quiz-info__icon"><img src="./images/icon-question-square.svg" alt="" /></div>
+                                            <div class="quiz-info__label">Tìm & trả lời<br />11 câu hỏi</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="quiz-info">
+                                            <div class="quiz-info__icon"><img src="./images/icon-stopwatch.svg" alt="" /></div>
+                                            <div class="quiz-info__label">10 phút<br />trắc nghiệm</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="quiz-info">
+                                            <div class="quiz-info__icon"><img src="./images/icon-medal.svg" alt="" /></div>
+                                            <div class="quiz-info__label">Đúng 11/11<br />để nhận quà</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-button-group">
+                                    <button class="button js-quiz-start" type="button" data-target=".md-login">Bắt đầu</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-quiz-question" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="js-quiz" data-time-limit="10"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-slide-game" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-game-result" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="js-game-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
