@@ -203,35 +203,90 @@ function timeFormat(time, type = 1) {
 
 $(function () {
 
-  $(".js-file-input").on("change", function () {
+  const $el = $('.js-file-upload');
 
-    var fileName = $(this).val().split(/\\|\//).pop();
+  const $list = $el.find('.file-input__list');
 
-    $(this).closest(".js-file").find(".js-file-text").text(fileName);
+  const $counter = $el.find('.file-input__counter');
 
-    var target = $(this).data("target");
+  const input = $el.find('.js-file-input').get(0);
 
-    if (target) {
+  $(input).on("change", renderFileList);
 
-      readURL(this, target);
+  $el.on('click', '.file-input__remove', function (e) {
+
+    e.preventDefault();
+
+    e.stopPropagation();
+
+    const index = $(this).data('index');
+
+    if (index === undefined) return false;
+
+    const dt = new DataTransfer();
+
+    const { files } = input;
+
+    for (let i = 0; i < files.length; i++) {
+
+      const file = files[i];
+
+      if (index !== i) dt.items.add(file);
     }
+
+    input.files = dt.files;
+
+    renderFileList();
   });
 
-  function readURL(input, target) {
+  function renderFileList() {
 
-    if (input.files && input.files[0]) {
+    $list.empty();
 
-      var reader = new FileReader();
+    const { files } = input;
 
-      reader.onload = function (e) {
+    if (files.length) {
 
-        $(target).show();
+      $el.addClass('has-file');
+    } else {
 
-        $(target).attr("src", e.target.result);
-      };
-
-      reader.readAsDataURL(input.files[0]);
+      $el.removeClass('has-file');
     }
+
+    if (files.length > 0 && files.length < 11) {
+
+      $('.js-upload-file-alert').removeClass('d-none');
+    } else {
+
+      $('.js-upload-file-alert').addClass('d-none');
+    }
+
+    $counter.text(`Đã tải lên ${files.length}/11`);
+
+    Array.from(files).forEach((file, index) => {
+
+      $list.append(`
+
+<div class="file-input__item">
+
+  <div class="file-input__small-icon">
+
+    <i class="fal fa-image"></i>
+
+  </div>
+
+  <div class="file-input__name">${file.name}</div>
+
+  <span class="file-input__remove ms-auto" data-index="${index}">
+
+    <i class="fal fa-times"></i>
+
+  </span>
+
+</div>
+
+      `);
+    });
   }
 });
 

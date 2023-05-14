@@ -22,23 +22,21 @@
                 <!-- main content-->
                 <div class="container">
                     <div class="mb-5 d-flex gap-3 flex-wrap">
-                        <h2 class="text-white w-100">HƯỚNG DẪN CHƠI MINIGAME</h2>
-                    </div>
-                    <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Quiz điều hướng</h2>
                         <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-form-info">Survey</button>
                         <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-survey-result">Survey result</button>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Interactive TVC</h2>
-                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-upload">Tải lên hình ảnh của bạn</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-upload">Tải lên hình ảnh</button>
                         <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-upload-success">Tải lên thành công</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-upload-failed">Tải lên thất bại</button>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Minigame 1: Ghép hình thẻ</h2>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-puzzle">Puzzle</buton>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-puzzle-guide">Puzzle Guide</buton>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-puzzle-error">Puzzle Error</buton>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-puzzle">Puzzle</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-puzzle-guide">Puzzle Guide</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-puzzle-error">Puzzle Error</button>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Minigame 2: Quiz</h2>
@@ -46,20 +44,17 @@
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Minigame 3: Ghép hình thẻ</h2>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-card-game-intro">Card game intro</buton>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-card-game">Card game</buton>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-card-game-result">Card game result</buton>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-card-game-intro">Card game intro</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-card-game">Card game</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-card-game-result">Card game result</button>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Popup chơi lại</h2>
                         <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-game-result">Game result</button>
                         <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-play-again">Play again</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-game-leaderboard">Leaderboard</button>
                         <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-game-form">Thông tin nhận thưởng</button>
-                    </div>
-                    <div class="mb-5 d-flex gap-3 flex-wrap">
-                        <h2 class="text-white w-100">Bảng xếp hạng</h2>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-game-leaderboard">Leaderboard</buton>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-game-guide">Hướng dẫn</buton>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-game-guide">Hướng dẫn</button>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Accounts</h2>
@@ -135,33 +130,55 @@
                         </div>
                     </div>
                 </div>
-                <div class="md-upload modal fade" tabindex="-1">
+                <div class="modal fade md-upload" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-underlay"></div>
                             <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
                             <div class="modal-body">
-                                <div class="modal-title">Tải lên hình ảnh của bạn</div>
-                                <div class="mt-4 mt-xl-40 mt-xxl-60">
-                                    <label class="file-input js-file">
-                                        <input class="js-file-input" type="file" data-target="#avatar-preview" /><img class="file-input__icon" src="./images/icon-cloud-upload.svg" alt="" /><span class="file-input__text js-file-text">Chấp nhận file .jpg, .png</span>
-                                    </label>
-                                </div>
+                                <form class="js-image-upload" action="#!">
+                                    <div class="modal-title">Tải lên hình ảnh của bạn</div>
+                                    <div class="file-input js-file-upload">
+                                        <label class="file-input__wrapper">
+                                            <input class="js-file-input" type="file" data-target="#avatar-preview" multiple="multiple" /><img class="file-input__icon" src="./images/icon-cloud-upload.svg" alt="" /><span class="file-input__text js-file-text">Chấp nhận file .jpg, .png</span>
+                                        </label>
+                                        <div class="file-input__list"></div>
+                                        <div class="file-input__counter">Đã tải lên 10/10</div>
+                                    </div>
+                                    <div class="modal-button-group">
+                                        <button class="button" type="submit">Gửi ảnh</button>
+                                    </div>
+                                    <div class="js-upload-file-alert fs-12 text-danger text-center mt-3 d-none"><i class="fal fa-times-circle me-2"></i>Bạn chưa tải lên đủ 11 ảnh</div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="md-upload-success modal fade" tabindex="-1">
+                <div class="modal fade md-upload-success" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-underlay"></div>
                             <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
                             <div class="modal-body">
-                                <div class="modal-icon"><i class="fal fa-lg fa-check-circle"></i></div>
+                                <div class="modal-icon text-success"><i class="fal fa-lg fa-check-circle"></i></div>
                                 <div class="modal-title">Tải lên thành công</div>
                                 <div class="modal-desc mx-auto" style="max-width: 493px;">Bài thi của bạn đã được tải lên thành công. Chúng tôi sẽ thông báo kết quả sớm nhất cho bạn thông qua email.</div>
+                                <div class="modal-button-group"><a class="button" href="/">Quay lại Sảnh chính</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-upload-failed" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="modal-icon text-danger"><i class="fal fa-lg fa-times-circle"></i></div>
+                                <div class="modal-title">Tải lên không thành công</div>
+                                <div class="modal-desc mx-auto" style="max-width: 493px;">Bài thi của bạn không chưa đạt số lượng tối thiểu.<br />Vui lòng kiểm tra và thử lại.</div>
                                 <div class="modal-button-group">
-                                    <button class="button" type="button">Quay lại Sảnh chính</button>
+                                    <button class="button js-switch-modal" type="button" data-target=".md-upload">Thử lại</button>
                                 </div>
                             </div>
                         </div>
@@ -590,20 +607,20 @@
                             <div class="modal-body">
                                 <div class="card-game-intro">
                                     <div class="modal-title">Minigame: Tìm thẻ trong thành phố</div>
-                                    <div class="row g-3">
+                                    <div class="row g-3 align-items-center mt-4">
                                         <div class="col-lg-8"><img src="./images/card-game-map.svg" alt="" /></div>
                                         <div class="col-lg-4">
-                                            <div class="row g-3">
-                                                <div class="col-auto"></div>
-                                                <div class="col">Tìm thẻ<br />qua mật thư</div>
+                                            <div class="card-game-intro__item">
+                                                <div class="card-game-intro__icon"><img src="./images/icon-envelope.svg" alt="" /></div>
+                                                <div class="card-game-intro__text">Tìm thẻ<br />qua mật thư</div>
                                             </div>
-                                            <div class="row g-3 mb-30">
-                                                <div class="col-auto"></div>
-                                                <div class="col">15 phút<br />tìm kiếm</div>
+                                            <div class="card-game-intro__item">
+                                                <div class="card-game-intro__icon"><img src="./images/icon-stopwatch.svg" alt="" /></div>
+                                                <div class="card-game-intro__text">15 phút<br />tìm kiếm</div>
                                             </div>
-                                            <div class="row g-3 mb-30">
-                                                <div class="col-auto"></div>
-                                                <div class="col">Tìm càng nhiều<br />điểm càng cao</div>
+                                            <div class="card-game-intro__item">
+                                                <div class="card-game-intro__icon"><img src="./images/icon-medal.svg" alt="" /></div>
+                                                <div class="card-game-intro__text">Tìm càng nhiều<br />điểm càng cao</div>
                                             </div>
                                         </div>
                                     </div>
