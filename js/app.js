@@ -62,6 +62,89 @@ $(function () {
 
 let modalTimeout = null;
 
+$(function () {
+
+  $('.js-switch-modal').on('click', function (e) {
+
+    e.preventDefault();
+
+    let target = $(this).attr('href');
+
+    if (!target) {
+
+      target = $(this).data('target');
+    }
+
+    $(this).closest('.modal').modal('hide');
+
+    if (target && $(target).length) {
+
+      setTimeout(() => {
+
+        $(target).modal('show');
+      }, 300);
+    }
+  });
+
+  $('.js-survey-form').on('submit', onSurveySubmit);
+});
+
+async function onSurveySubmit(e) {
+
+  e.preventDefault();
+
+  const data = $(this).serializeArray().reduce((carry, item) => {
+
+    // const re = new RegExp(/^([a-zA-Z0-9_-]+)\[([a-zA-Z0-9_-]+)\]$/);
+
+
+    // if (re.test(item.name)) {
+
+    //   const match = item.name.match(re);
+
+    //   const key = match[1];
+
+    //   const subKey = match[2];
+
+
+    //   if (!carry[key]) carry[key] = {};
+
+
+    //   carry[key][subKey] = item.value;
+
+    // } else {
+
+    //   carry[item.name] = item.value;
+
+    // }
+
+
+    carry.push(item.value);
+
+    return carry;
+  }, []);
+
+  const surveyResult = await submitSurvey(data);
+
+  $('.js-survey-result').empty().append(`
+
+<div>
+
+  <div class="modal-card"><img src="${surveyResult.image}" alt=""></div>
+
+  <div class="modal-subtitle">${surveyResult.title}</div>
+
+  <div class="modal-desc">${surveyResult.description}</div>
+
+  <div class="modal-button-group"><a class="button" href="${surveyResult.url}">Xem chi tiết</a></div>
+
+</div>
+
+  `);
+
+  showModal('.md-survey-result');
+}
+
 function hideModal() {
 
   const $modal = $('.modal.show');
@@ -152,192 +235,176 @@ $(function () {
   }
 });
 
-$(function () {
+const GAME_CONTROL = {};
 
-  $('.js-switch-modal').on('click', function (e) {
+GAME_CONTROL.showResult = () => {
+  showModal('.md-game-result');
+};
 
-    e.preventDefault();
-
-    let target = $(this).attr('href');
-
-    if (!target) {
-
-      target = $(this).data('target');
-    }
-
-    $(this).closest('.modal').modal('hide');
-
-    if (target && $(target).length) {
-
-      setTimeout(() => {
-
-        $(target).modal('show');
-      }, 300);
-    }
-  });
-});
-
-const GAME = {
+const PUZZLE = {
   arr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
   playing: false,
   time: 0,
+  timeLimit: 60,
+  point: 10,
   interval: null,
   isCompleted: false,
-  currentStage: 0,
-  stages: [],
-  stageTime: 0,
-  stagePoint: 0,
-  totalTime: 0,
-  totalPoint: 0,
-  el: null
+  images: [],
+  result: '',
+  el: null,
+  timeEl: null
 };
 
-const classesToRemove = GAME.arr.reduce((carry, item, index) => {
+const classesToRemove = PUZZLE.arr.reduce((carry, item, index) => {
   return carry + ' ' + 'cell--' + index;
 }, '');
 
 $(function () {
-  gameLoading();
+  puzzleLoading();
 });
 
-async function gameLoading() {
-  const slideGameData = await getSlideGameData();
+async function puzzleLoading() {
+  try {
+    const data = await getPuzzleData();
 
-  GAME.stages = slideGameData.stages;
-  GAME.stageTime = slideGameData.stageTime;
-  GAME.stagePoint = slideGameData.stagePoint;
+    if (!data) throw new Error('Puzzle data not found!');
 
-  GAME.el = $('.js-slide-game');
+    if (data.error) {
+      throw new Error(data.error.message);
+    }
 
-  GAME.el.on('click', '.js-game-start', gameStart);
+    PUZZLE.images = data.piece_jigsaw;
+    PUZZLE.result = data.result;
 
-  GAME.el.on('click', '.cell', onCellClick);
+    PUZZLE.el = $('.js-puzzle');
 
-  GAME.el.on('click', '.js-game-continue', nextStage);
+    PUZZLE.timeEl = PUZZLE.el.find('.puzzle__remaining');
 
-  nextStage();
+    PUZZLE.el.on('click', '.js-puzzle-start', puzzleStart);
+
+    PUZZLE.el.on('click', '.cell', puzzleMove);
+
+    puzzleReset();
+
+    $('.js-puzzle-result, .js-puzzle-guide').on('click', '.js-puzzle-continue', puzzleContinue);
+  } catch (error) {
+    $('.js-puzzle-error').find('.modal-desc').text(error.message);
+
+    showModal('.md-puzzle-error');
+  }
 }
 
-function nextStage() {
-  GAME.arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-  GAME.time = 0;
-  GAME.interval = null;
-  GAME.isCompleted = false;
+function puzzleReset() {
+  PUZZLE.arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  PUZZLE.time = 0;
+  PUZZLE.interval = null;
+  PUZZLE.isCompleted = false;
 
-  if (GAME.currentStage === GAME.stages.length) {
-    return onAllStageFinish();
-  }
+  const cellImages = [,,, ...PUZZLE.images];
 
-  const stage = GAME.stages[GAME.currentStage];
-  const cellImages = [,,, ...stage.images];
-
-  GAME.el.find('.cell').each(function (index, el) {
+  PUZZLE.el.find('.cell').each(function (index, el) {
     if (!cellImages[index]) return;
 
     $(el).empty().append(`<img class="cell-img" src="${cellImages[index]}" alt="">`);
   });
 
-  GAME.el.find('.game__remaining').text(`${GAME.stageTime - GAME.time}s`);
+  PUZZLE.timeEl.text(`${PUZZLE.timeLimit - PUZZLE.time}s`);
 
   reIndexing();
 }
 
-function onStageFinish() {
-  GAME.playing = false;
-  GAME.totalTime += GAME.time;
-  GAME.totalPoint += GAME.isCompleted ? GAME.stagePoint : 0;
-
-  $('.summary__total-point').text(GAME.totalPoint);
-  $('.summary__total-time').text(timeFormat(GAME.totalTime));
-  clearInterval(GAME.interval);
-
-  const stageImage = GAME.stages[GAME.currentStage]['stageImage'];
-  const stageMessage = GAME.stages[GAME.currentStage]['stageMessage'];
-
-  if (GAME.isCompleted) {
-    $('.js-game-result').empty().append(`
-      <div class="game-result">
-        <div class="modal-card"><img src="${stageMessage}" alt=""></div>
-        <div class="modal-title">Xin chúc mừng!</div>
-        <div class="modal-subtitle">${stageMessage}</div>
-        <div class="game-result__score">+${GAME.stagePoint} điểm
-            <div class="modal-button-group">
-                <button class="button js-game-continue" type="button">Tiếp tục</button>
-            </div>
-        </div>
-      </div>
-    `);
-
-    GAME.currentStage++;
-  } else {
-    $('.js-game-result').empty().append(`
-      <div class="game-result">
-        <div class="modal-card"><img src="${stageImage}" alt=""></div>
-        <div class="modal-title">Opps,</div>
-        <div class="modal-subtitle">Bạn chưa ghép đúng thẻ, hãy thử lại một lần nữa!</div>
-        <div class="game-result__score">+0 điểm
-            <div class="modal-button-group">
-                <button class="button js-game-continue" type="button">Tiếp tục</button>
-            </div>
-        </div>
-      </div>
-    `);
-  }
-
-  showModal('.md-game-result');
-}
-
-function onAllStageFinish() {
-  GAME.el.removeClass('unlock').addClass('finish');
-
-  if (window.onFinishAllStages && typeof window.onFinishAllStages === 'function') {
-    window.onFinishAllStages(GAME);
-  }
-}
-
-function gameStart() {
-  const $timeRemaining = GAME.el.find('.game__remaining');
-
-  GAME.isCompleted = false;
-  GAME.playing = true;
-  GAME.time = 0;
+function puzzleStart() {
+  PUZZLE.playing = true;
 
   shuffle();
 
-  clearInterval(GAME.interval);
+  clearInterval(PUZZLE.interval);
 
-  GAME.interval = setInterval(() => {
-    GAME.time++;
+  PUZZLE.interval = setInterval(() => {
+    PUZZLE.time++;
 
-    let remainingTime = GAME.stageTime - GAME.time;
+    let remainingTime = PUZZLE.timeLimit - PUZZLE.time;
 
-    $timeRemaining.text(remainingTime + 's');
+    PUZZLE.timeEl.text(remainingTime + 's');
 
-    if (!remainingTime) onStageFinish();
+    if (!remainingTime) puzzleFinish();
   }, 1000);
 
-  GAME.el.addClass('unlock');
+  PUZZLE.el.addClass('unlock');
 }
 
-function onCellClick(e) {
+function puzzleContinue() {
+  console.log('puzzleContinue');
+
+  if (PUZZLE.isCompleted) {
+    if (checkLoggedIn()) {
+      showModal('.md-quiz-begin');
+    } else {
+      PUZZLE.loginRequired = true;
+      showModal('.md-login');
+    }
+
+    return false;
+  }
+
+  PUZZLE.el.removeClass('unlock');
+
+  puzzleReset();
+
+  showModal('.md-puzzle');
+}
+
+function puzzleFinish() {
+  PUZZLE.playing = false;
+
+  clearInterval(PUZZLE.interval);
+
+  if (PUZZLE.isCompleted) {
+    $('.js-puzzle-result').empty().append(`
+      <div class="game-result">
+        <div class="modal-card"><img src="${PUZZLE.result}" alt=""></div>
+        <div class="modal-title">Xin chúc mừng!</div>
+        <div class="modal-subtitle">Chúc mừng bạn đã mở khóa Minigame 2 & 3.<br/>Tham gia ngay để trúng giải thưởng!</div>
+        <div class="modal-button-group">
+            <button class="button js-puzzle-continue" type="button">Tiếp tục</button>
+        </div>
+      </div>
+    `);
+  } else {
+    $('.js-puzzle-result').empty().append(`
+      <div class="game-result">
+        <div class="modal-card"><img src="${PUZZLE.result}" alt=""></div>
+        <div class="modal-title">Opps,</div>
+        <div class="modal-subtitle">Thử lại để nhận cơ hội tiếp tục tham gia Minigame 2 & 3 để trúng giải thưởng từ BIDV</div>
+        <div class="modal-button-group">
+            <button class="button js-puzzle-continue" type="button">Chơi lại</button>
+        </div>
+      </div>
+    `);
+  }
+
+  showModal('.md-puzzle-result');
+}
+
+function puzzleMove(e) {
   e.preventDefault();
 
   const index = Number($(this).data('index'));
-  const value = GAME.arr[index];
+  const value = PUZZLE.arr[index];
 
   if (value === 0 || value === 1 || value === 2) return false;
 
   if (isSlideAble(index)) {
     const zeroIndex = getZeroIndex();
 
-    GAME.arr[zeroIndex] = value;
-    GAME.arr[index] = 0;
+    PUZZLE.arr[zeroIndex] = value;
+    PUZZLE.arr[index] = 0;
 
     reIndexing();
 
-    if (checkResult()) {
-      GAME.isCompleted = true;
-      onAllStageFinish();
+    if (puzzleCheckResult()) {
+      PUZZLE.isCompleted = true;
+      puzzleFinish();
     }
   }
 }
@@ -347,7 +414,7 @@ function reIndexing() {
 
   $cell.removeClass(classesToRemove);
 
-  GAME.arr.forEach((value, index) => {
+  PUZZLE.arr.forEach((value, index) => {
     $cell.eq(value).addClass('cell--' + index).data('index', index);
   });
 }
@@ -360,8 +427,8 @@ function isSlideAble(index) {
 }
 
 function getZeroIndex() {
-  for (let i = 0; i < GAME.arr.length; i++) {
-    if (GAME.arr[i] === 0) return i;
+  for (let i = 0; i < PUZZLE.arr.length; i++) {
+    if (PUZZLE.arr[i] === 0) return i;
   }
 
   return 0;
@@ -378,9 +445,9 @@ function getSideBySide(index) {
   return items.filter(index => index !== 1 && index !== 2);
 }
 
-function checkResult() {
+function puzzleCheckResult() {
   let maxValue = 0;
-  let errorIndex = GAME.arr.findIndex(item => {
+  let errorIndex = PUZZLE.arr.findIndex(item => {
     if (item < maxValue) return true;
 
     maxValue = item;
@@ -404,22 +471,21 @@ function randomMove() {
 
   const randomIndex = sideBySide[Math.floor(Math.random() * sideBySide.length)];
 
-  GAME.arr[zeroIndex] = GAME.arr[randomIndex];
-  GAME.arr[randomIndex] = 0;
+  PUZZLE.arr[zeroIndex] = PUZZLE.arr[randomIndex];
+  PUZZLE.arr[randomIndex] = 0;
 }
-
-// QUIZ
 
 const QUIZ = {
   questions: [],
   current: 0,
   correct: 0,
-  time: 0, // Tính bằng giây
-  timeLimit: 0, // Tính bằng giây
+  maxPoint: 40,
+  time: 0, // giây
+  timeLimit: 5 * 60, // giây
   timeInterval: null,
-  el: null,
-  restTime: 3, // Tính bằng giây
-  restInterval: null
+  restTime: 3, // giây
+  restInterval: null,
+  el: null
 };
 
 $(function () {
@@ -431,14 +497,25 @@ $(function () {
 
   $('.js-quiz-start').on('click', quizStart);
 
-  $('.js-quiz').on('change', '.js-quiz-option', onSelectQuizOption);
+  $('.js-quiz').on('change', '.js-quiz-option', quizSelectOption);
+
+  $('.js-quiz').on('click', '.js-quiz-continue', function () {
+    if (window.cardGameLoading && typeof window.cardGameLoading === 'function') {
+      window.cardGameLoading();
+    }
+  });
 });
 
 async function quizStart() {
   QUIZ.current = 0;
   QUIZ.correct = 0;
   QUIZ.time = 0;
-  QUIZ.questions = await getQuizQuestions();
+
+  const quizQuestions = await getQuizQuestions();
+
+  for (const [, question] of Object.entries(quizQuestions)) {
+    QUIZ.questions.push(question);
+  }
 
   renderQuizQuestion();
 
@@ -454,7 +531,7 @@ function renderQuizQuestion() {
 <div class="quiz">
   <div class="quiz__title modal-title">Câu hỏi số ${QUIZ.current + 1}</div>
   <div class="quiz__question">${question.question}</div>
-  ${renderQuizAnswers(question.options)}
+  ${quizRenderAnswer(question.options)}
   <div class="quiz__info">
       <div>Câu hỏi đã trả lời:&nbsp;<span class="text-warning">${QUIZ.current}/${QUIZ.questions.length}</span></div>
       <div>Thời gian:&nbsp;<span class="text-warning"><span class="quiz__time">${timeFormat(QUIZ.time)}</span> /${timeFormat(QUIZ.timeLimit, 2)}</span></div>
@@ -471,12 +548,12 @@ function renderQuizQuestion() {
 
     if (QUIZ.time >= QUIZ.timeLimit) {
       clearInterval(QUIZ.timeInterval);
-      showQuizResult();
+      quizShowResult();
     }
   }, 1000);
 }
 
-function renderQuizAnswers(options) {
+function quizRenderAnswer(options) {
   let answerHTML = '';
 
   for (const [key, answer] of Object.entries(options)) {
@@ -490,7 +567,7 @@ function renderQuizAnswers(options) {
   return `<div class="quiz__answers">${answerHTML}</div>`;
 }
 
-function onSelectQuizOption(e) {
+function quizSelectOption(e) {
   clearInterval(QUIZ.timeInterval);
 
   const question = QUIZ.questions[QUIZ.current];
@@ -500,53 +577,69 @@ function onSelectQuizOption(e) {
   const answerKey = $answer.data('key');
 
   QUIZ.el.find('.js-quiz-option').prop('disabled', true);
-  QUIZ.el.find(`.quiz__answer[data-key="${question.answer}"]`).addClass('is-correct');
+  QUIZ.el.find(`.quiz__answer[data-key="${question.true_option}"]`).addClass('is-correct');
 
-  if (answerKey !== question.answer) {
+  if (answerKey !== question.true_option) {
     QUIZ.el.find(`.quiz__answer[data-key="${answerKey}"]`).addClass('is-incorrect');
   } else {
     QUIZ.correct++;
   }
 
-  showNextQuizQuestion();
+  quizNextQuestion();
 }
 
-function showNextQuizQuestion() {
+function quizNextQuestion() {
   QUIZ.current++;
-
-  if (QUIZ.current >= QUIZ.questions.length) {
-    showQuizResult();
-    return true;
-  }
 
   clearInterval(QUIZ.restInterval);
 
   let rest = 0;
 
   QUIZ.restInterval = setInterval(() => {
-    QUIZ.el.find('.quiz__rest-time').show().text(`Câu hỏi tiếp theo sẽ xuất hiện sau: ${QUIZ.restTime - rest}s`);
+    const message = QUIZ.current >= QUIZ.questions.length ? `Kết quả sẽ xuất hiện sau: ${QUIZ.restTime - rest}s` : `Câu hỏi tiếp theo sẽ xuất hiện sau: ${QUIZ.restTime - rest}s`;
+
+    QUIZ.el.find('.quiz__rest-time').show().text(message);
 
     rest += 1;
 
     if (rest > QUIZ.restTime) {
       clearInterval(QUIZ.restInterval);
-      renderQuizQuestion();
+
+      if (QUIZ.current >= QUIZ.questions.length) {
+        quizShowResult();
+      } else {
+        renderQuizQuestion();
+      }
     }
   }, 1000);
 }
 
-function showQuizResult() {
+function quizShowResult() {
   hideModal();
+
+  const point = QUIZ.correct === QUIZ.questions.length ? QUIZ.maxPoint : QUIZ.correct;
 
   showModal('.md-quiz-question', function () {
     QUIZ.el.empty().append(`
 <div class="quiz-result">
   <div class="modal-title">Xin chúc mừng!<br>Bạn đã trả lời đúng <span class="text-warning">${QUIZ.correct}/${QUIZ.questions.length}</span> câu hỏi</div>
-  <div class="quiz-result__score">+${QUIZ.correct * 10} điểm</div>
+  <div class="quiz-result__score">+${point} điểm</div>
   <div class="modal-button-group">
-      <button class="button" type="button">Tiếp tục</button>
+      <button class="button" type="button js-quiz-continue">Tiếp tục</button>
   </div>
 </div>
       `);
   });
+}
+
+const CARD_GAME = {};
+
+$(function () {
+  $('.js-card-game-finish').on('click', function () {
+    GAME_CONTROL.showResult();
+  });
+});
+
+function cardGameLoading() {
+  showModal('.md-card-game-intro');
 }

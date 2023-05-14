@@ -21,55 +21,13 @@
             <div class="page__content">
                 <!-- main content-->
                 <div class="container">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="game js-slide-game">
-                                <div class="game__body">
-                                    <div class="game__wrapper">
-                                        <div class="game__inner">
-                                            <div class="cell cell--empty cell--0" data-index="0">
-                                                <div class="cell-caret cell-caret--top"></div>
-                                                <div class="cell-caret cell-caret--bottom"></div>
-                                                <div class="cell-caret cell-caret--left"></div>
-                                                <div class="cell-caret cell-caret--right"></div>
-                                            </div>
-                                            <div class="cell cell--1" data-index="1"></div>
-                                            <div class="cell cell--2" data-index="2"></div>
-                                            <div class="cell cell--3" data-index="3"></div>
-                                            <div class="cell cell--4" data-index="4"></div>
-                                            <div class="cell cell--5" data-index="5"></div>
-                                            <div class="cell cell--6" data-index="6"></div>
-                                            <div class="cell cell--7" data-index="7"></div>
-                                            <div class="cell cell--8" data-index="8"></div>
-                                            <div class="cell cell--9" data-index="9"></div>
-                                            <div class="cell cell--10" data-index="10"></div>
-                                            <div class="cell cell--11" data-index="11"></div>
-                                            <div class="game__lock">
-                                                <div class="game__lock-inner">
-                                                    <button class="button game__start js-game-start" type="button">Bắt đầu</button>
-                                                    <button class="button game__end" type="button">Kết thúc</button>
-                                                </div>
-                                            </div>
-                                            <div class="game__board">
-                                                <div class="game__type">Minigame</div>
-                                                <div class="game__name">Ghép hình thẻ</div>
-                                                <div class="game__time">Còn lại:&nbsp;<span class="game__remaining">
-                                                        <!-- 60s-->
-                                                    </span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="game__footer"><a class="game__link" href="#!"><i class="fal fa-question-circle me-2"></i>Hướng dẫn</a></div>
-                            </div>
-                        </div>
+                    <div class="mb-5 d-flex gap-3 flex-wrap">
+                        <h2 class="text-white w-100">HƯỚNG DẪN CHƠI MINIGAME</h2>
                     </div>
-                    <div class="mb-5 d-flex gap-3 flex-wrap"></div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Quiz điều hướng</h2>
-                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-form-info">Vui lòng cho biết độ tuổi của bạn</button>
-                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-intro-1">Bạn phù hợp với thẻ BIDV Napas Smart</button>
-                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-intro-2">Bạn phù hợp với thẻ BIDV Visa Platinum Cashback</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-form-info">Survey</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-survey-result">Survey result</button>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Interactive TVC</h2>
@@ -77,29 +35,31 @@
                         <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-upload-success">Tải lên thành công</button>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
-                        <h2 class="text-white w-100">Popup hỏi login</h2>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-login-suggest">Bạn có muốn đăng nhập để lưu kết quả chơi?</buton>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-gift-form">Thông tin nhận thưởng</buton>
+                        <h2 class="text-white w-100">Minigame 1: Ghép hình thẻ</h2>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-puzzle">Puzzle</buton>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-puzzle-guide">Puzzle Guide</buton>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-puzzle-error">Puzzle Error</buton>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Minigame 2: Quiz</h2>
                         <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-quiz-begin">Quiz Begin</buton>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
-                        <h2 class="text-white w-100">Minigame 1: Ghép hình thẻ</h2>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-slide-game">Slide Game</buton>
-                    </div>
-                    <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Minigame 3: Ghép hình thẻ</h2>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-card-game-intro">Card game intro</buton>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-card-game">Card game</buton>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-card-game-result">Card game result</buton>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Popup chơi lại</h2>
-                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-result">Xin chúc mừng, bạn đã hoàn thành tất cả trò chơi</button>
-                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-play-again">Bạn có muốn chơi lại từ đầu không?</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-game-result">Game result</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-play-again">Play again</button>
+                        <button class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-game-form">Thông tin nhận thưởng</button>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Bảng xếp hạng</h2>
-                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-leaderboard">Leaderboard</buton>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-game-leaderboard">Leaderboard</buton>
+                        <buton class="button" type="button" data-bs-toggle="modal" data-bs-target=".md-game-guide">Hướng dẫn</buton>
                     </div>
                     <div class="mb-5 d-flex gap-3 flex-wrap">
                         <h2 class="text-white w-100">Accounts</h2>
@@ -139,18 +99,18 @@
                         <div class="modal-content">
                             <div class="modal-underlay"></div>
                             <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
-                            <div class="modal-body">
+                            <form class="modal-body js-survey-form" action="#!">
                                 <div class="md-form-info__group">
                                     <label class="md-form-info__label">Vui lòng cho biết độ tuổi của bạn</label>
                                     <div class="md-form-info__radio-group">
                                         <label class="radio-styled">
-                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>18 - 25 tuổi</span>
+                                            <input class="radio-styled__input" type="radio" name="survey[1]" value="a" /><span class="radio-styled__icon"></span><span>18 - 25 tuổi</span>
                                         </label>
                                         <label class="radio-styled">
-                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>25 - 45 tuổi</span>
+                                            <input class="radio-styled__input" type="radio" name="survey[1]" value="b" /><span class="radio-styled__icon"></span><span>25 - 45 tuổi</span>
                                         </label>
                                         <label class="radio-styled">
-                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>Trên 45 tuổi</span>
+                                            <input class="radio-styled__input" type="radio" name="survey[1]" value="c" /><span class="radio-styled__icon"></span><span>Trên 45 tuổi</span>
                                         </label>
                                     </div>
                                 </div>
@@ -158,54 +118,20 @@
                                     <label class="md-form-info__label">Chi tiêu trung bình hàng tháng của bạn</label>
                                     <div class="md-form-info__radio-group">
                                         <label class="radio-styled">
-                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>18 - 25 tuổi</span>
+                                            <input class="radio-styled__input" type="radio" name="survey[2]" value="d" /><span class="radio-styled__icon"></span><span>18 - 25 tuổi</span>
                                         </label>
                                         <label class="radio-styled">
-                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>25 - 45 tuổi</span>
+                                            <input class="radio-styled__input" type="radio" name="survey[2]" value="e" /><span class="radio-styled__icon"></span><span>25 - 45 tuổi</span>
                                         </label>
                                         <label class="radio-styled">
-                                            <input class="radio-styled__input" type="radio" name="radio" /><span class="radio-styled__icon"></span><span>Trên 45 tuổi</span>
+                                            <input class="radio-styled__input" type="radio" name="survey[3]" value="f" /><span class="radio-styled__icon"></span><span>Trên 45 tuổi</span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="modal-button-group">
-                                    <button class="button" type="button">Xác nhận</button>
+                                    <button class="button" type="submit">Xác nhận</button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md-intro-1 modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-underlay"></div>
-                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
-                            <div class="modal-body">
-                                <div class="modal-card"><img src="./images/modal-card-1.png" alt="" /></div>
-                                <div class="modal-title">Xin chúc mừng</div>
-                                <div class="modal-subtitle">Bạn phù hợp với thẻ BIDV Napas Smart</div>
-                                <div class="modal-desc">Vui lòng ấn nút bên dưới để xem thêm thông tin chi tiết</div>
-                                <div class="modal-button-group">
-                                    <button class="button" type="button">Xem chi tiết</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md-intro-2 modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-underlay"></div>
-                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
-                            <div class="modal-body">
-                                <div class="modal-card"><img src="./images/modal-card-2.png" alt="" /></div>
-                                <div class="modal-title">Xin chúc mừng</div>
-                                <div class="modal-subtitle">Bạn phù hợp với thẻ BIDV Napas Smart</div>
-                                <div class="modal-desc">Bạn phù hợp với thẻ BIDV Visa Platinum Cashback</div>
-                                <div class="modal-button-group">
-                                    <button class="button" type="button">Xem chi tiết</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -237,6 +163,17 @@
                                 <div class="modal-button-group">
                                     <button class="button" type="button">Quay lại Sảnh chính</button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-survey-result" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="js-survey-result"></div>
                             </div>
                         </div>
                     </div>
@@ -309,21 +246,6 @@
                                         <button class="button" type="submit">Tiếp tục khám phá</button>
                                     </div>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md-login-suggest modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-underlay"></div>
-                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
-                            <div class="modal-body">
-                                <div class="modal-title">Bạn có muốn đăng nhập để lưu kết quả chơi?</div>
-                                <div class="modal-button-group">
-                                    <button class="button js-switch-modal" type="button" data-target=".md-login">Đăng nhập</button>
-                                    <button class="button" type="button">Tiếp tục chơi</button>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -517,153 +439,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="md-play-again modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-underlay"></div>
-                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
-                            <div class="modal-body">
-                                <div class="modal-title">Bạn có muốn chơi lại từ đầu không?</div>
-                                <div class="modal-desc">Lưu ý: Thời gian sẽ được cộng dần giữa các lần chơi lại</div>
-                                <div class="modal-button-group">
-                                    <button class="button me-4 me-xl-40" type="button">Có</button>
-                                    <button class="button" type="button">Không</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md-result modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-underlay"></div>
-                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
-                            <div class="modal-body">
-                                <div class="md-result__badge"><img src="./images/medal-badge.svg" alt="" /></div>
-                                <div class="md-result__title">Total score</div>
-                                <div class="md-result__score">60</div>
-                                <div class="md-result__time"><i class="fal fa-stopwatch me-2"></i>5p30s</div>
-                                <div class="md-result__desc">Xin chúc mừng, bạn đã hoàn thành tất cả trò chơi</div>
-                                <div class="modal-button-group">
-                                    <button class="button js-switch-modal" type="button" data-target=".md-login">Đăng nhập</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md-leaderboard modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-underlay"></div>
-                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
-                            <div class="modal-body">
-                                <div class="md-leaderboard__title">Leaderboard</div>
-                                <div class="md-leaderboard__list">
-                                    <div class="md-leaderboard__item">
-                                        <div class="md-leaderboard__place"><img src="./images/medal-1.svg" alt="" />
-                                        </div>
-                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
-                                        <div class="md-leaderboard__name">Player Name</div>
-                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
-                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
-                                    </div>
-                                    <div class="md-leaderboard__item">
-                                        <div class="md-leaderboard__place"><img src="./images/medal-2.svg" alt="" />
-                                        </div>
-                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
-                                        <div class="md-leaderboard__name">Player Name</div>
-                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
-                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
-                                    </div>
-                                    <div class="md-leaderboard__item">
-                                        <div class="md-leaderboard__place"><img src="./images/medal-3.svg" alt="" />
-                                        </div>
-                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
-                                        <div class="md-leaderboard__name">Player Name</div>
-                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
-                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
-                                    </div>
-                                    <div class="md-leaderboard__item">
-                                        <div class="md-leaderboard__place">4
-                                        </div>
-                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
-                                        <div class="md-leaderboard__name">Player Name</div>
-                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
-                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
-                                    </div>
-                                    <div class="md-leaderboard__item">
-                                        <div class="md-leaderboard__place">5
-                                        </div>
-                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
-                                        <div class="md-leaderboard__name">Player Name</div>
-                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
-                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
-                                    </div>
-                                    <div class="md-leaderboard__item">
-                                        <div class="md-leaderboard__place">6
-                                        </div>
-                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
-                                        <div class="md-leaderboard__name">Player Name</div>
-                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
-                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
-                                    </div>
-                                    <div class="md-leaderboard__item">
-                                        <div class="md-leaderboard__place">7
-                                        </div>
-                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
-                                        <div class="md-leaderboard__name">Player Name</div>
-                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
-                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
-                                    </div>
-                                    <div class="md-leaderboard__item">
-                                        <div class="md-leaderboard__place">8
-                                        </div>
-                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
-                                        <div class="md-leaderboard__name">Player Name</div>
-                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
-                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
-                                    </div>
-                                    <div class="md-leaderboard__item">
-                                        <div class="md-leaderboard__place">9
-                                        </div>
-                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
-                                        <div class="md-leaderboard__name">Player Name</div>
-                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
-                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
-                                    </div>
-                                    <div class="md-leaderboard__item">
-                                        <div class="md-leaderboard__place">10
-                                        </div>
-                                        <div class="md-leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
-                                        <div class="md-leaderboard__name">Player Name</div>
-                                        <div class="md-leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
-                                        <div class="md-leaderboard__time"><i class="fal fa-stopwatch me-2"></i><span>5p30s</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md-gift-form modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-underlay"></div>
-                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
-                            <div class="modal-body md-form">
-                                <div class="modal-title">Thông tin nhận thưởng</div>
-                                <div class="row">
-                                    <div class="col-lg-4 col-form-label md-form-info__label">Số CCCD/Hộ chiếu<span class="text-danger">*</span></div>
-                                    <div class="col-lg-8">
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                </div>
-                                <div class="modal-button-group">
-                                    <button class="button" type="button" data-target=".md-login">Gửi thông tin</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="modal fade md-quiz-begin" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -709,12 +484,169 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade md-slide-game" tabindex="-1">
+                <div class="modal fade md-puzzle" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-underlay"></div>
                             <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
                             <div class="modal-body">
+                                <div class="puzzle js-puzzle">
+                                    <div class="puzzle__body">
+                                        <div class="puzzle__wrapper">
+                                            <div class="puzzle__inner">
+                                                <div class="cell cell--empty cell--0" data-index="0">
+                                                    <div class="cell-caret cell-caret--top"></div>
+                                                    <div class="cell-caret cell-caret--bottom"></div>
+                                                    <div class="cell-caret cell-caret--left"></div>
+                                                    <div class="cell-caret cell-caret--right"></div>
+                                                </div>
+                                                <div class="cell cell--1" data-index="1"></div>
+                                                <div class="cell cell--2" data-index="2"></div>
+                                                <div class="cell cell--3" data-index="3"></div>
+                                                <div class="cell cell--4" data-index="4"></div>
+                                                <div class="cell cell--5" data-index="5"></div>
+                                                <div class="cell cell--6" data-index="6"></div>
+                                                <div class="cell cell--7" data-index="7"></div>
+                                                <div class="cell cell--8" data-index="8"></div>
+                                                <div class="cell cell--9" data-index="9"></div>
+                                                <div class="cell cell--10" data-index="10"></div>
+                                                <div class="cell cell--11" data-index="11"></div>
+                                                <div class="puzzle__lock">
+                                                    <div class="puzzle__lock-inner">
+                                                        <button class="button puzzle__start js-puzzle-start" type="button">Bắt đầu</button>
+                                                        <button class="button puzzle__end" type="button">Kết thúc</button>
+                                                    </div>
+                                                </div>
+                                                <div class="puzzle__board">
+                                                    <div class="puzzle__type">Minigame</div>
+                                                    <div class="puzzle__name">Ghép hình thẻ</div>
+                                                    <div class="puzzle__time">Còn lại:&nbsp;<span class="puzzle__remaining">60s</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="puzzle__footer"><a class="puzzle__link js-switch-modal" href=".md-puzzle-guide"><i class="fal fa-question-circle me-2"></i>Hướng dẫn</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-puzzle-result" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="js-puzzle-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-puzzle-guide" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="js-puzzle-guide">
+                                    <div class="modal-title">Minigame Ghép hình thẻ</div>
+                                    <div class="modal-desc text-start">
+                                        <ul>
+                                            <li class="mt-3">Trong 60 giây, bạn phải di chuyển các mảnh ghép để xếp được đúng hình ảnh hoàn chỉnh của thẻ BIDV</li>
+                                            <li class="mt-3">Nếu hoàn thành trong 60 giây, bạn sẽ có cơ hội mở khóa Game 2 & 3 để chơi và nhận những phần thưởng hấp dẫn.</li>
+                                            <li class="mt-3">Nếu không hoàn thành trong 60 giây, bạn sẽ phải chơi lại</li>
+                                        </ul>
+                                        <div class="modal-button-group">
+                                            <button class="button js-puzzle-continue" type="button">Quay lại</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-puzzle-error" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="js-puzzle-error">
+                                    <div class="modal-title">Oops,</div>
+                                    <div class="modal-desc">Bạn đã hết lượt chơi lại</div>
+                                    <div class="modal-button-group">
+                                        <button class="button" type="button">Đóng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-card-game-intro" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="card-game-intro">
+                                    <div class="modal-title">Minigame: Tìm thẻ trong thành phố</div>
+                                    <div class="row g-3">
+                                        <div class="col-lg-8"><img src="./images/card-game-map.svg" alt="" /></div>
+                                        <div class="col-lg-4">
+                                            <div class="row g-3">
+                                                <div class="col-auto"></div>
+                                                <div class="col">Tìm thẻ<br />qua mật thư</div>
+                                            </div>
+                                            <div class="row g-3 mb-30">
+                                                <div class="col-auto"></div>
+                                                <div class="col">15 phút<br />tìm kiếm</div>
+                                            </div>
+                                            <div class="row g-3 mb-30">
+                                                <div class="col-auto"></div>
+                                                <div class="col">Tìm càng nhiều<br />điểm càng cao</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-button-group">
+                                        <button class="button js-switch-modal" type="button" data-target=".md-card-game">Bắt đầu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-card-game" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="card-game">
+                                    <div class="modal-icon"><img src="./images/card-game-search-icon.svg" alt="" /></div>
+                                    <div class="modal-title">Câu hỏi mật thư thứ 1</div>
+                                    <div class="modal-desc">Tôi ở tòa nhà có ưu đãi phí rút tiền chỉ từ 1%</div>
+                                    <div class="modal-button-group">
+                                        <button class="button js-switch-modal" type="button" data-target=".md-card-game-result">Bắt đầu tìm kiếm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-card-game-result" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="card-game">
+                                    <div class="modal-title">Xin chúc mừng!</div>
+                                    <div class="modal-subtitle">Bạn đã tìm được <span class="text-warning">11/11</span> tấm thẻ được ẩn giấu</div>
+                                    <div class="modal-point">+60 điểm</div>
+                                    <div class="modal-button-group">
+                                        <button class="button js-card-game-finish" type="button">Tiếp tục</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -725,7 +657,207 @@
                             <div class="modal-underlay"></div>
                             <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
                             <div class="modal-body">
-                                <div class="js-game-result"></div>
+                                <div class="game-result">
+                                    <div class="game-result__badge"><img src="./images/medal-badge.svg" alt="" /></div>
+                                    <div class="game-result__title">Total score</div>
+                                    <div class="game-result__score">60</div>
+                                    <div class="game-result__time"><i class="fal fa-clock me-2"></i>5p30s</div>
+                                    <div class="game-result__desc">Xin chúc mừng, bạn đã hoàn thành tất cả trò chơi</div>
+                                    <div class="modal-button-group">
+                                        <button class="button js-switch-modal" type="button" data-target=".md-game-form">Điền thông tin nhận thưởng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-game-form" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <form class="md-form">
+                                    <div class="modal-title">Thông tin nhận thưởng</div>
+                                    <div class="md-form__group">
+                                        <div class="md-form__label">Số CCCD/Hộ chiếu<span class="text-danger">*</span></div>
+                                        <input class="form-control" type="number" placeholder="xxxxxxxxxxxx" required="required" />
+                                    </div>
+                                    <div class="md-form__group">
+                                        <div class="md-form__label">6 số cuối tài khoản BIDV<span class="text-danger">*</span></div>
+                                        <input class="form-control" type="number" placeholder="xxxxxx" required="required" />
+                                    </div>
+                                    <div class="md-form__group">
+                                        <div class="md-form__label">Số điện thoại<span class="text-danger">*</span></div>
+                                        <input class="form-control" type="number" placeholder="0123456789" required="required" />
+                                    </div>
+                                    <div class="modal-button-group">
+                                        <button class="button js-switch-modal" type="button" data-target=".md-game-leaderboard">Gửi thông tin</button>
+                                    </div>
+                                </form>
+                                <div class="modal-bottom">
+                                    <p>Nếu chưa có tài khoản vui lòng <a href="#!">tải ứng dụng SmartBanking</a> hoặc đến PGD BIDV gần nhất để mở tài khoản nhận thưởng</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-game-guide" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="game">
+                                    <div class="game__header">HƯỚNG DẪN CHƠI MINIGAME</div>
+                                    <div class="game__list">
+                                        <div class="game__guide">
+                                            <h3>Thời gian tham gia</h3>
+                                            <p>Từ ngày … đến ngày …. Chương trình được chia làm 4 đợt. Kết quả sẽ được công bố và 17h00 Chủ nhật hàng tuần</p>
+                                            <ul>
+                                                <li>Đợt 1:</li>
+                                                <li>Đợt 2:</li>
+                                                <li>Đợt 3:</li>
+                                                <li>Đợt 4:</li>
+                                            </ul>
+                                            <h3>Thể lệ tham gia</h3>
+                                            <ul>
+                                                <li>Người chơi phải chơi lần lượt theo Game 1, 2, 3 để nhận quà</li>
+                                                <li>Điều kiện để chơi tiếp Game 2 là phải thắng Game 1, trong trường hợp thua Game 1 sẽ phải chơi lại từ đầu</li>
+                                                <li>Sau khi chơi Game 1, người chơi bắt buộc phải Login để chơi tiếp game 2 + 3.</li>
+                                                <li>Sau khi chơi xong Game 3, người chơi để lại thông tin gồm SĐT, số CCCD, 6 số cuối tài khoản BIDV (trong trường hợp chưa vui lòng tải app SmartBanking hoặc ra PGD BIDV gần nhất để mở tài khoản)</li>
+                                                <li>Trong trường hợp điểm chơi thấp, người chơi có thể chọn chế độ chơi lại từ Game 2 để có điểm số cao hơn</li>
+                                            </ul>
+                                            <h3>Bảng xếp hạng</h3>
+                                            <p>Mỗi tuần BIDV sẽ trao thưởng cho 203 người chơi có điểm số và thời gian chơi nhanh nhất. Giải thưởng sẽ được gửi thẳng trực tiếp vào Tài khoản BIDV của người chơi. Cơ cấu giải thưởng gồm:</p>
+                                            <ul class="fw-700">
+                                                <li>01 Giải Nhất trị giá 200.000 VNĐ</li>
+                                                <il>02 Giải Nhì trị giá 150.000 VNĐ</il>
+                                                <il>2000 Giải Ba trị giá 100.000 VNĐ</il>
+                                            </ul>
+                                            <h3>Giới thiệu các trò chơi</h3>
+                                            <h4 class="fw-700">Game 1 - Ghép hình thẻ BIDV</h4>
+                                            <p>01 hình ảnh thẻ sẽ được cắt thành 9 bức ảnh và bị xáo trộn, người chơi phải di chuyển và xếp lại đúng vị trí để ra được bức ảnh thẻ trong vòng 60s.</p>
+                                            <h4 class="fw-700">Game 2 - Câu hỏi Quiz về thẻ BIDV</h4>
+                                            <p>Trong vòng 5 phút, người chơi phải trả lời đúng 5 câu hỏi với các nội dung xoay quanh các thẻ của BIDV.</p>
+                                            <h4 class="fw-700">Game 3 - Thu thập thẻ trong thành phố</h4>
+                                            <p>Trong vòng 15 phút, người dùng cần thu thập đủ các thẻ trong thành phố. Các mật thư sẽ được hiện lần lượt theo thứ tự và người chơi cần giải và tìm kiếm thẻ theo mật thư được cung cấp.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-game-leaderboard" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="game">
+                                    <div class="game__header">Leaderboard</div>
+                                    <div class="game__list">
+                                        <div class="leaderboard">
+                                            <div class="leaderboard__place"><img src="./images/medal-1.svg" alt="" />
+                                            </div>
+                                            <div class="leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                            <div class="leaderboard__name">Player Name</div>
+                                            <div class="leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                            <div class="leaderboard__time"><i class="fal fa-clock me-2"></i><span>5p30s</span></div>
+                                        </div>
+                                        <div class="leaderboard">
+                                            <div class="leaderboard__place"><img src="./images/medal-2.svg" alt="" />
+                                            </div>
+                                            <div class="leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                            <div class="leaderboard__name">Player Name</div>
+                                            <div class="leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                            <div class="leaderboard__time"><i class="fal fa-clock me-2"></i><span>5p30s</span></div>
+                                        </div>
+                                        <div class="leaderboard">
+                                            <div class="leaderboard__place"><img src="./images/medal-3.svg" alt="" />
+                                            </div>
+                                            <div class="leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                            <div class="leaderboard__name">Player Name</div>
+                                            <div class="leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                            <div class="leaderboard__time"><i class="fal fa-clock me-2"></i><span>5p30s</span></div>
+                                        </div>
+                                        <div class="leaderboard">
+                                            <div class="leaderboard__place">4
+                                            </div>
+                                            <div class="leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                            <div class="leaderboard__name">Player Name</div>
+                                            <div class="leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                            <div class="leaderboard__time"><i class="fal fa-clock me-2"></i><span>5p30s</span></div>
+                                        </div>
+                                        <div class="leaderboard">
+                                            <div class="leaderboard__place">5
+                                            </div>
+                                            <div class="leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                            <div class="leaderboard__name">Player Name</div>
+                                            <div class="leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                            <div class="leaderboard__time"><i class="fal fa-clock me-2"></i><span>5p30s</span></div>
+                                        </div>
+                                        <div class="leaderboard">
+                                            <div class="leaderboard__place">6
+                                            </div>
+                                            <div class="leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                            <div class="leaderboard__name">Player Name</div>
+                                            <div class="leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                            <div class="leaderboard__time"><i class="fal fa-clock me-2"></i><span>5p30s</span></div>
+                                        </div>
+                                        <div class="leaderboard">
+                                            <div class="leaderboard__place">7
+                                            </div>
+                                            <div class="leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                            <div class="leaderboard__name">Player Name</div>
+                                            <div class="leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                            <div class="leaderboard__time"><i class="fal fa-clock me-2"></i><span>5p30s</span></div>
+                                        </div>
+                                        <div class="leaderboard">
+                                            <div class="leaderboard__place">8
+                                            </div>
+                                            <div class="leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                            <div class="leaderboard__name">Player Name</div>
+                                            <div class="leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                            <div class="leaderboard__time"><i class="fal fa-clock me-2"></i><span>5p30s</span></div>
+                                        </div>
+                                        <div class="leaderboard">
+                                            <div class="leaderboard__place">9
+                                            </div>
+                                            <div class="leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                            <div class="leaderboard__name">Player Name</div>
+                                            <div class="leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                            <div class="leaderboard__time"><i class="fal fa-clock me-2"></i><span>5p30s</span></div>
+                                        </div>
+                                        <div class="leaderboard">
+                                            <div class="leaderboard__place">10
+                                            </div>
+                                            <div class="leaderboard__avatar"><img src="./images/avatar.png" alt="" /></div>
+                                            <div class="leaderboard__name">Player Name</div>
+                                            <div class="leaderboard__point"><i class="fal fa-star me-2"></i><span>60</span></div>
+                                            <div class="leaderboard__time"><i class="fal fa-clock me-2"></i><span>5p30s</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade md-play-again" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-underlay"></div>
+                            <button class="modal-close" type="button" data-bs-dismiss="modal"></button>
+                            <div class="modal-body">
+                                <div class="game-play-again">
+                                    <div class="modal-title">Bạn có muốn chơi lại từ đầu không?</div>
+                                    <div class="modal-desc">Lưu ý: Bạn sẽ được chơi lại game từ Game 2 & toàn bộ điểm và thời gian sẽ được reset về 0</div>
+                                    <div class="modal-button-group">
+                                        <button class="button me-4 me-xl-40" type="button">Có</button>
+                                        <button class="button" type="button">Không</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
